@@ -32,6 +32,14 @@ func TestBST(t *testing.T) {
     n.Insert(-1)
     n.Insert(4)
 
+    if !n.Search(-1) {
+        t.Fatalf("key not present")
+    }
+
+    if n.Search(12) {
+        t.Fatalf("key unexpectedly present")
+    }
+
     confirmStructure(t, n)
 
     n.Remove(5)

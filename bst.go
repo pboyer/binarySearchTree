@@ -22,6 +22,25 @@ func (n *Node) String() string {
     return fmt.Sprintf("%v - (%s, %s)", n.val, l, r)
 }
 
+func (n *Node) Search(val int) bool {
+    if n.val == val {
+        return true
+    }
+
+    if val < n.val {
+        if n.left == nil {
+            return false
+        }
+        return n.left.Search(val)
+    }
+
+    if n.right == nil {
+        return false
+    }
+
+    return n.right.Search(val)
+}
+
 func (n *Node) Insert(val int) error {
     if n.val == val {
         return fmt.Errorf("value already present")
